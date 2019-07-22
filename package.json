@@ -1,0 +1,68 @@
+{
+  "name": "mp3_player-with-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|scss|sass|less)$": "identity-obj-proxy"
+    }
+  },
+  "scripts": {
+    "tsm": "tsm src --watch",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/GQSM/fish_studio.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/GQSM/fish_studio/issues"
+  },
+  "homepage": "https://gitlab.com/GQSM/fish_studio#README",
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4",
+    "history": "^4.9.0",
+    "node-fetch": "^2.3.0",
+    "node-sass": "^4.10.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "@testing-library/react": "^8.0.1",
+    "@types/react": "^16.8.20",
+    "@types/react-dom": "^16.8.4",
+    "@typescript-eslint/parser": "^1.10.2",
+    "babel-loader": "^8.0.4",
+    "css-loader": "^1.0.1",
+    "eslint": "^5.15.2",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4",
+    "eslint-plugin-typescript": "^0.14.0",
+    "fetch-mock": "^7.3.1",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^24.6.0",
+    "jest-dom": "^3.1.3",
+    "mini-css-extract-plugin": "^0.4.4",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "typed-scss-modules": "0.0.10",
+    "typescript": "^3.5.2",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9"
+  }
+}
