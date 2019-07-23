@@ -22,7 +22,7 @@ class Player implements IPlayer {
     this.playStatus = playStatus.play;
   }
 
-  private getMusicIndexWuthId(musicId: string): number {
+  private getMusicIndexWithId(musicId: string): number {
     const result: number = this.musics.findIndex((music: IMusic) => music.id === musicId);
     return result;
   }
@@ -36,19 +36,35 @@ class Player implements IPlayer {
   }
 
   nextMusic(): void {
-    const currentPlayerMusicIndex = this.getMusicIndexWuthId(this.currentPlayMusic.id);
-    const nextMusicIndex = currentPlayerMusicIndex === this.musics.length - 1 ? 0 : currentPlayerMusicIndex;
+    const currentPlayerMusicIndex = this.getMusicIndexWithId(this.currentPlayMusic.id);
+    const nextMusicIndex = currentPlayerMusicIndex === this.musics.length - 1 ? 0 : currentPlayerMusicIndex + 1;
     this.currentPlayMusic = this.musics[nextMusicIndex];
   }
 
   previousMusic(): void {
-    const currentPlayerMusicIndex = this.getMusicIndexWuthId(this.currentPlayMusic.id);
-    const previousMusicIndex = currentPlayerMusicIndex === 0 ? this.musics.length - 1 : currentPlayerMusicIndex;
+    const currentPlayerMusicIndex = this.getMusicIndexWithId(this.currentPlayMusic.id);
+    const previousMusicIndex = currentPlayerMusicIndex === 0 ? this.musics.length - 1 : currentPlayerMusicIndex - 1;
     this.currentPlayMusic = this.musics[previousMusicIndex];
   }
 
   choiceMusic(musicId: string): void {
-    this.currentPlayMusic = this.musics[this.getMusicIndexWuthId(musicId)];
+    this.currentPlayMusic = this.musics[this.getMusicIndexWithId(musicId)];
+  }
+
+  switchPlayType(): void {
+    switch (this.playType) {
+      case playType.loop:
+        this.playType = playType.repeat;
+        break;
+      case playType.repeat:
+        this.playType = playType.random;
+        break;
+      case playType.random:
+        this.playType = playType.loop;
+        break;
+      default:
+        throw new Error('No have playType');
+    }
   }
 
   addSound(): void {
