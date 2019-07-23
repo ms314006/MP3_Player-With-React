@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "tsm": "tsm src --watch",
-    "test": "jest"
+    "test": "jest",
+    "coverage": "jest --coverage && cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
     "type": "git",
@@ -43,6 +44,7 @@
     "@types/react-dom": "^16.8.4",
     "@typescript-eslint/parser": "^1.10.2",
     "babel-loader": "^8.0.4",
+    "coveralls": "^3.0.5",
     "css-loader": "^1.0.1",
     "eslint": "^5.15.2",
     "eslint-config-airbnb": "^17.1.0",
