@@ -1,23 +1,16 @@
 import React, { StatelessComponent } from 'react';
+import Player from '../Player';
 import styles from './index.scss';
 
-interface MainProps {
-  title?: string
-}
-
-const Main: StatelessComponent<MainProps> = (props) => {
+const Main = () => {
   return (
     <div
       className={styles.title}
       data-testid="title"
     >
-      {props.title}
+      <Player />
     </div>
   );
-};
-
-Main.defaultProps = {
-  title: 'default',
 };
 
 export default Main;
