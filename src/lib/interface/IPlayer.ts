@@ -3,6 +3,7 @@ import playType from '../enum/playType';
 import playStatus from '../enum/playStatus';
 
 export interface IPlayer {
+  audioPlayer: any;
   musics: IMusic[];
   currentPlayMusic: IMusic;
   sound: number;
