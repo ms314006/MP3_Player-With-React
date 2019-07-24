@@ -1,23 +1,25 @@
-import { IPlayer } from './reference/IPlayer';
-import { IMusic } from './reference/IMusic';
+import { IPlayer } from './interface/IPlayer';
+import { IMusic } from './interface/IMusic';
 import playType from './enum/playType';
 import playStatus from './enum/playStatus';
 
-class Player implements IPlayer {
+class AudioPlayer implements IPlayer {
+  audioPlayer: any;
+
   musics: IMusic[];
 
   currentPlayMusic: IMusic;
 
-  sound: number;
+  sound: number = 0;
 
   playType: playType;
 
   playStatus: playStatus;
 
   constructor(musics: IMusic[]) {
+    this.audioPlayer = new Audio();
     this.musics = musics;
     this.currentPlayMusic = { ...musics[0], };
-    this.sound = 20;
     this.playType = playType.loop;
     this.playStatus = playStatus.play;
   }
@@ -27,31 +29,47 @@ class Player implements IPlayer {
     return result;
   }
 
-  playMusic(): void {
+  private updateSound = (sound: number): void => {
+    this.sound = sound;
+    this.audioPlayer.volume = this.sound / 100;
+  }
+
+  initPlayer = (): void => {
+    this.updateSound(20);
+    this.audioPlayer.src = `./music/${this.currentPlayMusic.name}.mp3`;
+    this.audioPlayer.play();
+  }
+
+  playMusic = (): void => {
     this.playStatus = playStatus.play;
+    this.audioPlayer.play();
   }
 
-  stopMusic(): void {
+  stopMusic = (): void => {
     this.playStatus = playStatus.stop;
+    this.audioPlayer.pause();
   }
 
-  nextMusic(): void {
+  nextMusic = (): void => {
     const currentPlayerMusicIndex = this.getMusicIndexWithId(this.currentPlayMusic.id);
     const nextMusicIndex = currentPlayerMusicIndex === this.musics.length - 1 ? 0 : currentPlayerMusicIndex + 1;
     this.currentPlayMusic = this.musics[nextMusicIndex];
+    this.initPlayer();
   }
 
-  previousMusic(): void {
+  previousMusic = (): void => {
     const currentPlayerMusicIndex = this.getMusicIndexWithId(this.currentPlayMusic.id);
     const previousMusicIndex = currentPlayerMusicIndex === 0 ? this.musics.length - 1 : currentPlayerMusicIndex - 1;
     this.currentPlayMusic = this.musics[previousMusicIndex];
+    this.initPlayer();
   }
 
-  choiceMusic(musicId: string): void {
+  choiceMusic = (musicId: string): void => {
     this.currentPlayMusic = this.musics[this.getMusicIndexWithId(musicId)];
+    this.initPlayer();
   }
 
-  switchPlayType(): void {
+  switchPlayType = (): void => {
     switch (this.playType) {
       case playType.loop:
         this.playType = playType.repeat;
@@ -67,15 +85,15 @@ class Player implements IPlayer {
     }
   }
 
-  addSound(): void {
+  addSound = (): void => {
     const newSound = this.sound + 1;
-    this.sound = newSound > 100 ? 100 : newSound;
+    this.updateSound(newSound > 100 ? 100 : newSound);
   }
 
-  subSound(): void {
+  subSound = (): void => {
     const newSound = this.sound - 1;
-    this.sound = newSound < 0 ? 0 : newSound;
+    this.updateSound(newSound < 0 ? 0 : newSound);
   }
 }
 
-export default Player;
+export default AudioPlayer;

@@ -1,10 +1,10 @@
-import Player from '../../src/lib/Player';
+import AudioPlayer from '../../src/lib/AudioPlayer';
 import musics from '../../src/asset/musics';
 import playType from '../../src/lib/enum/playType';
 import playStatus from '../../src/lib/enum/playStatus';
 
 // create instance
-const player = new Player(musics);
+const player = new AudioPlayer(musics);
 
 describe('Test Player class.', () => {
   test('Check musics', () => {
