@@ -1,12 +1,10 @@
-import { IMusic } from '../lib/reference/IMusic';
+import { IMusic } from '../lib/interface/IMusic';
 
 const musics: IMusic[] = [
-  { id: '0', name: 'Spy Suite', },
-  { id: '1', name: 'Central Park', },
-  { id: '2', name: 'Ice Cream', },
-  { id: '3', name: 'Keys to the Apocalypse', },
-  { id: '4', name: 'Space Hunter', },
-  { id: '5', name: 'The End', }
+  { id: '0', name: 'Images_of_Tomorrow', },
+  { id: '1', name: 'Jungle_Intrigue', },
+  { id: '2', name: 'Keys_to_the_Apocalypse', },
+  { id: '3', name: 'Metamorphosis', }
 ];
 
 export default musics;
