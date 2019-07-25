@@ -10,7 +10,7 @@ class AudioPlayer implements IPlayer {
 
   currentPlayMusic: IMusic;
 
-  sound: number = 0;
+  sound: number = 20;
 
   playType: playType;
 
@@ -29,14 +29,9 @@ class AudioPlayer implements IPlayer {
     return result;
   }
 
-  private updateSound = (sound: number): void => {
-    this.sound = sound;
-    this.audioPlayer.volume = this.sound / 100;
-  }
-
   initPlayer = (): void => {
-    this.updateSound(20);
     this.audioPlayer.src = `./music/${this.currentPlayMusic.name}.mp3`;
+    this.audioPlayer.currentTime = 0;
     this.audioPlayer.play();
   }
 
@@ -69,7 +64,7 @@ class AudioPlayer implements IPlayer {
     this.initPlayer();
   }
 
-  switchPlayType = (): void => {
+  changePlayType = (): void => {
     switch (this.playType) {
       case playType.loop:
         this.playType = playType.repeat;
@@ -85,14 +80,9 @@ class AudioPlayer implements IPlayer {
     }
   }
 
-  addSound = (): void => {
-    const newSound = this.sound + 1;
-    this.updateSound(newSound > 100 ? 100 : newSound);
-  }
-
-  subSound = (): void => {
-    const newSound = this.sound - 1;
-    this.updateSound(newSound < 0 ? 0 : newSound);
+  updateSound = (sound: number): void => {
+    this.sound = sound;
+    this.audioPlayer.volume = this.sound / 100;
   }
 }
 

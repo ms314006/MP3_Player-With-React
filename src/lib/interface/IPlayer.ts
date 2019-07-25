@@ -14,7 +14,6 @@ export interface IPlayer {
   nextMusic(): void;
   previousMusic(): void;
   choiceMusic(musicId: string): void;
-  switchPlayType(): void;
-  addSound(): void;
-  subSound(): void;
+  changePlayType(): void;
+  updateSound(sound: number): void;
 }
