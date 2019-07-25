@@ -9,7 +9,7 @@ export const initState: { sound: number, music: IMusic } = {
   },
 };
 
-const player = (state = initState, action) => {
+const player = (state = initState, action: any) => {
   switch (action.type) {
     case CHANGE_MUSIC:
       return {
