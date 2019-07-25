@@ -41,18 +41,9 @@ describe('Test Player class.', () => {
 
   test('Check switch play type', () => {
     expect(player.playType).toBe(playType.loop);
-    player.switchPlayType();
+    player.changePlayType();
     expect(player.playType).toBe(playType.repeat);
-    player.switchPlayType();
+    player.changePlayType();
     expect(player.playType).toBe(playType.random);
   });
-
-  test('Check use sound ( add and sub )', () => {
-    expect(player.sound).toBe(20);
-    player.addSound();
-    expect(player.sound).toBe(21);
-    player.subSound();
-    expect(player.sound).toBe(20);
-  });
-
 });
