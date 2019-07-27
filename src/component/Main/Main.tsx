@@ -1,14 +1,21 @@
 import React, { StatelessComponent } from 'react';
 import Player from '../Player';
+import Menu from '../Menu';
+import Content from '../Content';
 import styles from './index.scss';
 
 const Main = () => {
   return (
     <div
-      className={styles.title}
-      data-testid="title"
+      className={styles.mainBlock}
+      data-testid="mainBlock"
     >
-      <Player />
+      <Menu />
+      <Content />
+      <div style={{ backgroundColor: '#ffa', }} />
+      <div className={styles.playerControllerBlock}>
+        <Player />
+      </div>
     </div>
   );
 };
