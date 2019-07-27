@@ -1,0 +1,53 @@
+.listIcon {
+    width: 16px;
+    height: 16px;
+    margin: 0px 24px;
+}
+
+.listBlock {
+    display: flex;
+    justify-content: space-between;
+    margin-top: -1px;
+    padding: 8px 0px;
+    border-top: 1px solid #D3D3D3;
+    border-bottom: 1px solid #D3D3D3;
+    width: 90%;
+    height: 24px;
+    font-size: 16px;
+    color: #6C6E7F;
+
+    .listLeftBlock {
+        display: flex;
+        align-items: center;
+        .musicListImg {
+            width: 40px;
+            height: 40px;
+            display: 'flex';
+            background-position: 50% 50%;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    
+        .musicListIndex {
+            margin: 0px 8px;
+        }
+    }
+
+    .listRightBlock {
+        display: flex;
+        align-items: center;
+        .floatList {
+            color: #6C6E7F;
+        }
+
+        .currentPlatIcon {
+            width: 20px;
+            height: 20px;
+            margin: 0px;
+        }
+    }
+}
+
+.shadow {
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.16);
+}

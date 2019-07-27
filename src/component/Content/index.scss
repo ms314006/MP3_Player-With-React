@@ -1,0 +1,60 @@
+.contentBlock {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', serif;
+    .bannerImage {
+        height: 260px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        .bannerTopBlock {
+            height: 50%;
+            display: flex;
+            justify-content: space-between;
+            .bannerPlayerController {
+                display: flex;
+                align-items: flex-start;
+                .arrowControllerLeft {
+                    margin: 32px 8px 32px 32px;
+                }
+                .arrowControllerRight {
+                    margin: 32px 32px 32px 8px;
+                }
+            }
+            .bannerSeachInput {
+                display: flex;
+                align-items: center;
+                height: 28px;
+                padding: 32px;
+                input {
+                    padding-left: 12px; 
+                    width: 220px;
+                    height: 100%;
+                    border: none;
+                    border-radius: 50px;
+                    font-size: 12px;
+                }
+                .searchIcon {
+                    margin-left: -32px;
+                    margin-right: 32px;
+                    width: 16px;
+                    height: 16px;
+                }
+            }
+        }
+        .bannerbottomBlock {
+            height: 50%;
+            display: flex;
+            align-items: flex-end;
+            .bannerTitle {
+                margin: 32px;
+                color: #ffffff;
+                font-size: 36px;
+                font-weight: bold;
+            }
+        }
+    }
+}
