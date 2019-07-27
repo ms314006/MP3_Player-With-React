@@ -2,37 +2,26 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { IMusic } from '../../lib/interface/IMusic';
 import AudioPlayer from '../../lib/AudioPlayer';
-import musics from '../../asset/musics';
 import * as actions from '../../actions/player';
 import styles from './index.scss';
 
 interface PlayerProps {
   sound: number;
   music: IMusic;
+  playMusic(): void;
+  stopMusic(): void;
+  nextMusic(): void;
+  previousMusic(): void;
   updateSound(sound: number): void;
-  chageMusic(music: IMusic): void;
 }
 
-// create player
-const player = new AudioPlayer(musics);
-player.initPlayer();
-
 const Player = (props: PlayerProps) => {
-  useEffect(() => {
-    props.updateSound(player.sound);
-  }, []);
   return (
     <div>
-      <button
-        type="button"
-        onClick={() => {
-          player.playMusic();
-          props.chageMusic(player.currentPlayMusic);
-        }}
-      >
+      <button type="button" onClick={props.playMusic}>
         點我開始
       </button>
-      <button type="button" onClick={player.stopMusic}>
+      <button type="button" onClick={props.stopMusic}>
         點我暫停
       </button>
       <input
@@ -40,36 +29,17 @@ const Player = (props: PlayerProps) => {
         min="0"
         max="100"
         step="1"
-        value={player.sound}
-        onChange={(e) => {
-          player.updateSound(Number(e.target.value));
-          props.updateSound(player.sound);
-        }}
+        value={props.sound}
+        onChange={(e) => { props.updateSound(Number(e.target.value)); }}
         className={styles.soundController}
       />
-      <button
-        type="button"
-        onClick={
-          () => {
-            player.previousMusic();
-            props.chageMusic(player.currentPlayMusic);
-          }
-        }
-      >
+      <button type="button" onClick={props.previousMusic}>
         上一首
       </button>
-      <button
-        type="button"
-        onClick={
-          () => {
-            player.nextMusic();
-            props.chageMusic(player.currentPlayMusic);
-          }
-        }
-      >
+      <button type="button" onClick={props.nextMusic}>
         下一首
       </button>
-      <span>歌曲{player.currentPlayMusic.name}</span>
+      <span>歌曲{props.music.name}</span>
     </div>
   );
 };
@@ -80,7 +50,10 @@ const mapStateToProps = (state: { sound: number, music: IMusic }) => ({
 });
 
 const mapStateToDispatch = (dispatch: any) => ({
-  chageMusic: (music: IMusic) => { dispatch(actions.chageMusic(music)); },
+  playMusic: () => { dispatch(actions.playMusic()); },
+  stopMusic: () => { dispatch(actions.stopMusic()); },
+  nextMusic: () => { dispatch(actions.nextMusic()); },
+  previousMusic: () => { dispatch(actions.priviousMusic()); },
   updateSound: (sound: number) => { dispatch(actions.updateSound(sound)); },
 });
 

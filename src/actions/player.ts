@@ -1,12 +1,27 @@
 import IMusic from '../lib/interface/IMusic';
 
-export const CHANGE_MUSIC = 'CHANGE_MUSIC';
+export const PLAY_MUSIC = 'PLAY_MUSIC';
 
-export const chageMusic = (music: IMusic) => ({
-  type: CHANGE_MUSIC,
-  payload: {
-    music,
-  },
+export const playMusic = () => ({
+  type: PLAY_MUSIC,
+});
+
+export const STOP_MUSIC = 'STOP_MUSIC';
+
+export const stopMusic = () => ({
+  type: STOP_MUSIC,
+});
+
+export const NEXT_MUSIC = 'NEXT_MUSIC';
+
+export const nextMusic = () => ({
+  type: NEXT_MUSIC,
+});
+
+export const PRIVIOUS_MUSIC = 'PRIVIOUS_MUSIC';
+
+export const priviousMusic = () => ({
+  type: PRIVIOUS_MUSIC,
 });
 
 export const UPDATE_SOUND = 'UPDATE_SOUND';
