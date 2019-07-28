@@ -1,0 +1,24 @@
+.listBlock {
+    margin: 20px 0px;
+    display: flex;
+    .albumListsImg {
+        width: 104px;
+        height: 104px;
+        display: 'flex';
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .albumInfo {
+        display: flex;
+        flex-direction: column;
+        margin: 8px;
+        font-size: 16px;
+
+        .albumYear {
+            font-size: 12px;
+            margin: 16px 0px;
+        }
+    }
+}
