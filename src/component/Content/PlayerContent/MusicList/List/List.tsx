@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { IMusic } from '../../../../../lib/interface/IMusic';
+import * as actions from '../../../../../actions/player';
 import styles from './index.scss';
 
 interface ListProps {
   index: number;
   music: IMusic;
   currentPlayMusic: IMusic;
+  choiceMusic(musicId: string): void;
 }
 
 const List = (props: ListProps) => {
@@ -14,6 +16,7 @@ const List = (props: ListProps) => {
   return (
     <div
       className={`${styles.listBlock} ${isCurrentPlayMusic() ? styles.shadow : ''}`}
+      onClick={() => { props.choiceMusic(props.music.id) }}
     >
       <div className={styles.listLeftBlock}>
         <div
@@ -48,4 +51,8 @@ const mapStateToProps = (state: { music: IMusic }) => ({
   currentPlayMusic: state.music,
 });
 
-export default connect(mapStateToProps)(List);
+const mapStateToDispatch = (dispatch: any) => ({
+  choiceMusic: (musicId: string) => { dispatch(actions.choiceMusic(musicId)); },
+});
+
+export default connect(mapStateToProps, mapStateToDispatch)(List);
