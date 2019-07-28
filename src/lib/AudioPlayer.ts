@@ -21,7 +21,7 @@ class AudioPlayer implements IPlayer {
     this.musics = musics;
     this.currentPlayMusic = { ...musics[0], };
     this.playType = playType.loop;
-    this.playStatus = playStatus.play;
+    this.playStatus = playStatus.stop;
   }
 
   static convertSecondToString = (second: number): string => {
@@ -41,18 +41,14 @@ class AudioPlayer implements IPlayer {
     return result;
   }
 
-  initPlayer = (): void => {
+  private readyPlayNewMusic(): void {
     this.audioPlayer.src = `./music/${this.currentPlayMusic.name}.mp3`;
     this.audioPlayer.currentTime = 0;
+  }
+
+  initPlayer = (): void => {
+    this.readyPlayNewMusic();
     this.audioPlayer.addEventListener('ended', this.nextMusic, false);
-    const playPromise = this.audioPlayer.play();
-    if (playPromise !== undefined) {
-      playPromise.then(() => {
-        this.audioPlayer.play();
-      }).catch(() => {
-        this.audioPlayer.play();
-      });
-    }
   }
 
   playMusic = (): void => {
@@ -69,19 +65,22 @@ class AudioPlayer implements IPlayer {
     const currentPlayerMusicIndex = this.getMusicIndexWithId(this.currentPlayMusic.id);
     const nextMusicIndex = currentPlayerMusicIndex === this.musics.length - 1 ? 0 : currentPlayerMusicIndex + 1;
     this.currentPlayMusic = this.musics[nextMusicIndex];
-    this.initPlayer();
+    this.readyPlayNewMusic();
+    this.playMusic();
   }
 
   previousMusic = (): void => {
     const currentPlayerMusicIndex = this.getMusicIndexWithId(this.currentPlayMusic.id);
     const previousMusicIndex = currentPlayerMusicIndex === 0 ? this.musics.length - 1 : currentPlayerMusicIndex - 1;
     this.currentPlayMusic = this.musics[previousMusicIndex];
-    this.initPlayer();
+    this.readyPlayNewMusic();
+    this.playMusic();
   }
 
   choiceMusic = (musicId: string): void => {
     this.currentPlayMusic = this.musics[this.getMusicIndexWithId(musicId)];
-    this.initPlayer();
+    this.readyPlayNewMusic();
+    this.playMusic();
   }
 
   getCurrentPlayTime = (): number => this.audioPlayer.currentTime;
