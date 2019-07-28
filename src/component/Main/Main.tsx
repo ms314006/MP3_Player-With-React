@@ -2,6 +2,7 @@ import React, { StatelessComponent } from 'react';
 import Player from '../Player';
 import Menu from '../Menu';
 import Content from '../Content';
+import MusicLists from '../MusicLists';
 import styles from './index.scss';
 
 const Main = () => {
@@ -12,7 +13,7 @@ const Main = () => {
     >
       <Menu />
       <Content />
-      <div style={{ backgroundColor: '#ffa', }} />
+      <MusicLists />
       <div className={styles.playerControllerBlock}>
         <Player />
       </div>
