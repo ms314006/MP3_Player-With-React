@@ -86,3 +86,19 @@
   width: 16px;
   margin: 0px 8px;
 }
+
+@media all and (min-width: 0px) and (max-width: 960px) {
+  .playerBlock {
+    .musicBlock {
+      display: none;
+    }
+
+    .playerControllerBlock {
+      width: 50%
+    }
+
+    .soundBlock {
+      width: 50%
+    }
+  }
+}
