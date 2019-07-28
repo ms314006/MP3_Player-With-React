@@ -1,0 +1,80 @@
+.playerBlock {
+  padding: 0px 20px; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  .musicBlock {
+    box-sizing: content-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color:#333333;
+    font-size: 20px;
+    font-family: 'Roboto', serif;
+    height: 100%;
+    width: 30%;
+    .topBlock {
+      margin-top: 20px;
+      .musicName {
+        margin-right: 16px;
+      }
+    }
+    .bottomBlock {
+      margin-bottom: 20px;
+      color: #6C6E7F;
+      font-size: 16px;
+    }
+  }
+
+  .playerControllerBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 40%;
+    height: 100%;
+
+    .topBlock {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .icon {
+        margin: 0px 16px;
+      }
+
+      .playStatusIcon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 32px;
+        width: 32px;
+        border: 1px solid #707070;
+        border-radius: 50%;
+        img {
+          height: 20px;
+          width: 20px;
+        }
+      }
+    }
+
+    .bottomBlock {
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .soundBlock {
+    display: flex;
+    justify-content: flex-end;
+    width: 30%;
+  }
+}
+
+.icon {
+  height: 16px;
+  width: 16px;
+  margin: 0px 8px;
+}
