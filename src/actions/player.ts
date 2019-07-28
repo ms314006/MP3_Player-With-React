@@ -24,6 +24,15 @@ export const priviousMusic = () => ({
   type: PRIVIOUS_MUSIC,
 });
 
+export const CHOICE_MUSIC = 'CHOICE_MUSIC';
+
+export const choiceMusic = (musicId: string) => ({
+  type: CHOICE_MUSIC,
+  payload: {
+    musicId,
+  },
+});
+
 export const UPDATE_SOUND = 'UPDATE_SOUND';
 
 export const updateSound = (sound: number) => ({
