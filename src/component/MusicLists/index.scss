@@ -1,0 +1,40 @@
+.musicListBlock {
+    padding: 0px 16px;
+    border-left: 1px solid #D3D3D3;
+    .memberBlock {
+        margin: 28px 0px;
+        display: flex;
+        align-items: center;
+        .memberIcon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 32px;
+            height: 32px;
+            border: 1px solid #D3D3D3;
+            border-radius: 50%;
+            img {
+                width: 20px;
+                height: 20px;
+            }
+        }
+        .memberName {
+            margin: 0px 8px;
+            color: #6C6E7F;
+            font-size: 16px;
+        }
+    }
+    .musicListTitle {
+        font-size: 12px;
+        color: #A3A3A3;
+    }
+
+    .musicLists {
+        margin: 10px 0px;
+        .musicList {
+            margin: 12px 0px;
+            color: #6C6E7F;
+            font-size: 16px;
+        }
+    }
+}
