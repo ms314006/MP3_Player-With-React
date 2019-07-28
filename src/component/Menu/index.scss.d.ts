@@ -10,3 +10,4 @@ export const menuCenterBlock: string;
 export const centerTitleBlock: string;
 export const listTitle: string;
 export const menuBottomBlock: string;
+export const menuImg: string;

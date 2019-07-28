@@ -39,7 +39,7 @@ const Menu = (props: MenuProps) => {
                 key={aList}
                 className={styles.listBlock}
                 style={{
-                  borderLeft: aList === 'Albums' ? '5px solid #6AC8D0' : 'none'
+                  borderLeft: `4px solid ${aList === 'Albums' ? '#6AC8D0' : '#FFFFFF'}`
                 }}
               >
                 <span className={styles.listTitle}>{aList}</span>
@@ -48,10 +48,12 @@ const Menu = (props: MenuProps) => {
           }
         </div>
       </div>
-      <div
-        className={styles.menuBottomBlock}
-        style={{ backgroundImage: `url(./image/${props.music.name}.jpg)`, }}
-      />
+      <div className={styles.menuBottomBlock}>
+        <div
+          className={styles.menuImg}
+          style={{ backgroundImage: `url(./image/${props.music.name}.jpg)`, }}
+        />
+      </div>
     </div>
   );
 };
