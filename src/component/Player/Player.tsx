@@ -20,12 +20,16 @@ interface PlayerProps {
   updateSound(sound: number): void;
 }
 
+let intervalIng: boolean = false;
+
 const Player = (props: PlayerProps) => {
   const isPlay = () => props.playStatus === playStatus.play;
-  const interval = setInterval(() => {
-    clearInterval(interval);
-    props.updateCurrentPlayTime();
-  }, 1000)
+  if (!intervalIng) {
+    intervalIng = true;
+    const interval = setInterval(() => {
+      props.updateCurrentPlayTime();
+    }, 1000)
+  }
   return (
     <div className={styles.playerBlock}>
       <div className={styles.musicBlock}>
