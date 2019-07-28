@@ -45,7 +45,14 @@ class AudioPlayer implements IPlayer {
     this.audioPlayer.src = `./music/${this.currentPlayMusic.name}.mp3`;
     this.audioPlayer.currentTime = 0;
     this.audioPlayer.addEventListener('ended', this.nextMusic, false);
-    this.audioPlayer.play();
+    const playPromise = this.audioPlayer.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        this.audioPlayer.play();
+      }).catch(() => {
+        this.audioPlayer.play();
+      });
+    }
   }
 
   playMusic = (): void => {
