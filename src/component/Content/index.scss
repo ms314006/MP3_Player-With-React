@@ -1,7 +1,6 @@
 .contentBlock {
     display: flex;
     flex-direction: column;
-    font-family: 'Roboto', serif;
     .bannerImage {
         height: 260px;
         width: 100%;
@@ -10,6 +9,7 @@
         background-position: 50% 50%;
         background-repeat: no-repeat;
         background-size: cover;
+        font-family: 'Roboto', serif;
         .bannerTopBlock {
             height: 50%;
             display: flex;
