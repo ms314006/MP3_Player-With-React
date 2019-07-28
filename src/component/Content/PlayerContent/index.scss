@@ -9,6 +9,14 @@
     }
 
     .musicContent {
-        width: 540px;
+        width: 72%;
     }
+}
+
+@media all and (min-width: 0px) and (max-width: 1240px) {
+  .playerContent {
+    .musicContent {
+        width: 480px;
+    }
+  }
 }
