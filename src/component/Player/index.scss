@@ -63,6 +63,14 @@
       margin-bottom: 20px;
       display: flex;
       justify-content: center;
+      align-items: center;
+      span {
+        display: block;
+        width: 30px;
+        margin: 0px 12px;
+        color: #6C6E7F;
+        font-size: 12px;
+      }
     }
   }
 

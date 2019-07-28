@@ -10,15 +10,22 @@ interface PlayerProps {
   sound: number;
   music: IMusic;
   playStatus: playStatus;
+  currentPlayTime: number;
   playMusic(): void;
   stopMusic(): void;
   nextMusic(): void;
   previousMusic(): void;
+  updateCurrentPlayTime(): void;
+  changeCurrentPlayTime(second: number): void;
   updateSound(sound: number): void;
 }
 
 const Player = (props: PlayerProps) => {
   const isPlay = () => props.playStatus === playStatus.play;
+  const interval = setInterval(() => {
+    clearInterval(interval);
+    props.updateCurrentPlayTime();
+  }, 1000)
   return (
     <div className={styles.playerBlock}>
       <div className={styles.musicBlock}>
@@ -53,13 +60,27 @@ const Player = (props: PlayerProps) => {
           <img src="./icon/cycle.svg" className={styles.icon}/>
         </div>
         <div className={styles.bottomBlock}>
+          <span>
+            {AudioPlayer.convertSecondToString(
+              props.currentPlayTime
+            )}
+          </span>
           <input
             type="range"
             min="0"
-            max="100"
+            max={props.music.playTimeLength}
             step="1"
             style={{ width: '100%', }}
+            value={props.currentPlayTime}
+            onChange={(e) => {
+              props.changeCurrentPlayTime(Number(e.target.value));
+            }}
           />
+          <span>
+            {AudioPlayer.convertSecondToString(
+              props.music.playTimeLength
+            )}
+          </span>
         </div>
       </div>
       <div className={styles.soundBlock}>
@@ -72,17 +93,24 @@ const Player = (props: PlayerProps) => {
           step="1"
           value={props.sound}
           onChange={(e) => { props.updateSound(Number(e.target.value)); }}
-          className={styles.soundController}
         />
       </div>
     </div>
   );
 };
 
-const mapStateToProps = (state: { sound: number, music: IMusic, playStatus: playStatus }) => ({
+const mapStateToProps = (state:
+  {
+    sound: number,
+    music: IMusic,
+    playStatus: playStatus,
+    currentPlayTime: number,
+  }
+) => ({
   music: state.music,
   sound: state.sound,
   playStatus: state.playStatus,
+  currentPlayTime: state.currentPlayTime,
 });
 
 const mapStateToDispatch = (dispatch: any) => ({
@@ -90,6 +118,8 @@ const mapStateToDispatch = (dispatch: any) => ({
   stopMusic: () => { dispatch(actions.stopMusic()); },
   nextMusic: () => { dispatch(actions.nextMusic()); },
   previousMusic: () => { dispatch(actions.priviousMusic()); },
+  updateCurrentPlayTime: () => { dispatch(actions.updateCurrentPlayTime()) },
+  changeCurrentPlayTime: (second: number) => { dispatch(actions.changeCurrentPlayTime(second)) },
   updateSound: (sound: number) => { dispatch(actions.updateSound(sound)); },
 });
 
