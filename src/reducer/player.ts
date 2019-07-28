@@ -3,40 +3,62 @@ import {
   STOP_MUSIC,
   NEXT_MUSIC,
   PRIVIOUS_MUSIC,
-  UPDATE_SOUND
+  UPDATE_SOUND,
+  CHOICE_MUSIC
 } from '../actions/player';
 import AudioPlayer from '../lib/AudioPlayer';
 import { IMusic } from '../lib/interface/IMusic';
+import { IMusicList } from '../lib/interface/IMusicList';
+import { IAlbum } from '../lib/interface/IAlbum';
+import playStatus from '../lib/enum/playStatus';
+import albumLists from '../asset/albumLists';
+import musicLists from '../asset/musicLists';
 import musics from '../asset/musics';
 
 // create player
 const player = new AudioPlayer(musics);
 player.initPlayer();
 
-export const initState: { sound: number, music: IMusic, musicList: IMusic[]} = {
+interface IState {
+  sound: number;
+  music: IMusic;
+  playStatus: playStatus;
+  musics: IMusic[];
+  musicLists: IMusicList[];
+  albumLists: IAlbum[];
+}
+
+export const initState: IState = {
   sound: player.sound,
   music: player.currentPlayMusic,
-  musicList: player.musics,
+  playStatus: player.playStatus,
+  musics: player.musics,
+  musicLists,
+  albumLists,
 };
 
 const playerReducer = (state = initState, action: any) => {
-  const updateCurrentMusic = () => ({
+  const updatePlayerInformation = () => ({
     ...state,
     music: player.currentPlayMusic,
+    playStatus: player.playStatus,
   });
   switch (action.type) {
     case PLAY_MUSIC:
       player.playMusic();
-      return updateCurrentMusic();
+      return updatePlayerInformation();
     case STOP_MUSIC:
       player.stopMusic();
-      return { ...state, };
+      return updatePlayerInformation();
     case NEXT_MUSIC:
       player.nextMusic();
-      return updateCurrentMusic();
+      return updatePlayerInformation();
     case PRIVIOUS_MUSIC:
       player.previousMusic();
-      return updateCurrentMusic();
+      return updatePlayerInformation();
+    case CHOICE_MUSIC:
+      player.choiceMusic(action.payload.musicId);
+      return updatePlayerInformation();
     case UPDATE_SOUND: {
       player.updateSound(action.payload.sound);
       return {
