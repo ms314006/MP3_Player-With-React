@@ -24,6 +24,18 @@ class AudioPlayer implements IPlayer {
     this.playStatus = playStatus.play;
   }
 
+  static convertSecondToString = (second: number): string => {
+    // 除 60 + 冒號 + 除 60 的餘數
+    const fillTwoLength = (target: (string | number), fillStr: string) => {
+      let result = String(target);
+      while (result.length < 2) {
+        result = `${fillStr}${result}`;
+      }
+      return result;
+    };
+    return `${fillTwoLength(Math.floor(second / 60), '0')}:${fillTwoLength(Math.floor(second) % 60, '0')}`;
+  }
+
   private getMusicIndexWithId(musicId: string): number {
     const result: number = this.musics.findIndex((music: IMusic) => music.id === musicId);
     return result;
@@ -32,6 +44,7 @@ class AudioPlayer implements IPlayer {
   initPlayer = (): void => {
     this.audioPlayer.src = `./music/${this.currentPlayMusic.name}.mp3`;
     this.audioPlayer.currentTime = 0;
+    this.audioPlayer.addEventListener('ended', this.nextMusic, false);
     this.audioPlayer.play();
   }
 
@@ -62,6 +75,12 @@ class AudioPlayer implements IPlayer {
   choiceMusic = (musicId: string): void => {
     this.currentPlayMusic = this.musics[this.getMusicIndexWithId(musicId)];
     this.initPlayer();
+  }
+
+  getCurrentPlayTime = (): number => this.audioPlayer.currentTime;
+
+  changeCurrentPlayTime = (time: number): void => {
+    this.audioPlayer.currentTime = time;
   }
 
   changePlayType = (): void => {

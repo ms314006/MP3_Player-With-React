@@ -33,6 +33,21 @@ export const choiceMusic = (musicId: string) => ({
   },
 });
 
+export const UPDATE_CURRENT_PLAY_TIME = 'UPDATE_CURRENT_PLAY_TIME';
+
+export const updateCurrentPlayTime = () => ({
+  type: UPDATE_CURRENT_PLAY_TIME,
+});
+
+export const CHANGE_CURRENT_PLAY_TIME = 'CHANGE_CURRENT_PLAY_TIME';
+
+export const changeCurrentPlayTime = (second: number) => ({
+  type: CHANGE_CURRENT_PLAY_TIME,
+  payload: {
+    second,
+  },
+});
+
 export const UPDATE_SOUND = 'UPDATE_SOUND';
 
 export const updateSound = (sound: number) => ({

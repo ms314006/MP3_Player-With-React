@@ -3,6 +3,8 @@ import {
   STOP_MUSIC,
   NEXT_MUSIC,
   PRIVIOUS_MUSIC,
+  UPDATE_CURRENT_PLAY_TIME,
+  CHANGE_CURRENT_PLAY_TIME,
   UPDATE_SOUND,
   CHOICE_MUSIC
 } from '../actions/player';
@@ -23,25 +25,28 @@ interface IState {
   sound: number;
   music: IMusic;
   playStatus: playStatus;
+  currentPlayTime: number;
   musics: IMusic[];
   musicLists: IMusicList[];
   albumLists: IAlbum[];
 }
 
-export const initState: IState = {
+export const initState = {
   sound: player.sound,
   music: player.currentPlayMusic,
   playStatus: player.playStatus,
+  currentPlayTime: 0,
   musics: player.musics,
   musicLists,
   albumLists,
 };
 
-const playerReducer = (state = initState, action: any) => {
+const playerReducer = (state: IState = initState, action: any) => {
   const updatePlayerInformation = () => ({
     ...state,
     music: player.currentPlayMusic,
     playStatus: player.playStatus,
+    currentPlayTime: player.getCurrentPlayTime(),
   });
   switch (action.type) {
     case PLAY_MUSIC:
@@ -55,6 +60,11 @@ const playerReducer = (state = initState, action: any) => {
       return updatePlayerInformation();
     case PRIVIOUS_MUSIC:
       player.previousMusic();
+      return updatePlayerInformation();
+    case UPDATE_CURRENT_PLAY_TIME:
+      return updatePlayerInformation();
+    case CHANGE_CURRENT_PLAY_TIME:
+      player.changeCurrentPlayTime(action.payload.second);
       return updatePlayerInformation();
     case CHOICE_MUSIC:
       player.choiceMusic(action.payload.musicId);
