@@ -1,5 +1,3 @@
-import IMusic from '../lib/interface/IMusic';
-
 export const PLAY_MUSIC = 'PLAY_MUSIC';
 
 export const playMusic = () => ({

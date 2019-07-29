@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import List from './List';
 import { IAlbum } from '../../../../lib/interface/IAlbum';
-import styles from './index.scss';
 
 interface MusicListProps {
   albumLists: IAlbum[];
@@ -10,7 +9,7 @@ interface MusicListProps {
 
 const AlbumList = (props: MusicListProps) => {
   return (
-      <div className={styles.musicListBlock}>
+      <div>
         {
           props.albumLists.map(
             (album, index) => (

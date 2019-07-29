@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import List from './List';
 import { IMusicList } from '../../lib/interface/IMusicList';
 import styles from './index.scss';
 

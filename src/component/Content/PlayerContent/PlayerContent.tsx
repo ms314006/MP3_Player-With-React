@@ -11,7 +11,7 @@ const PlayerContent = () => {
           <span className={styles.contentListTitle}>Top Song</span>
           <MusicList />
         </div>
-        <div className={styles.albumContent}>
+        <div>
           <span className={styles.contentListTitle}>New Album</span>
           <AlbumList />
         </div>
