@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "check-types": "tsc",
     "start": "webpack-dev-server",
     "tsm": "tsm src --watch",
     "test": "jest",
