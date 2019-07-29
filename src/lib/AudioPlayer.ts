@@ -36,19 +36,26 @@ class AudioPlayer implements IPlayer {
     return `${fillTwoLength(Math.floor(second / 60), '0')}:${fillTwoLength(Math.floor(second) % 60, '0')}`;
   }
 
-  private getMusicIndexWithId(musicId: string): number {
+  static randomGenerateJoinMessage = (): void => {
+    if ((Math.random() * 100) > 90) {
+      alert('抱歉這裡原本要隨機（ 10 % 的機率 ）出現加入會員的圖片，\n但我來不及做，嗚嗚...');
+    }
+  }
+
+  private getMusicIndexWithId = (musicId: string): number => {
     const result: number = this.musics.findIndex((music: IMusic) => music.id === musicId);
     return result;
   }
 
-  private readyPlayNewMusic(): void {
+  private readyPlayNewMusic = (): void => {
     this.audioPlayer.src = `./music/${this.currentPlayMusic.name}.mp3`;
     this.audioPlayer.currentTime = 0;
+    AudioPlayer.randomGenerateJoinMessage();
   }
 
   initPlayer = (): void => {
     this.readyPlayNewMusic();
-    this.audioPlayer.addEventListener('ended', this.nextMusic, false);
+    this.audioPlayer.addEventListener('ended', this.playNextMusic, false);
   }
 
   playMusic = (): void => {
