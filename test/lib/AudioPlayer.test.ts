@@ -16,18 +16,18 @@ describe('Test Player class.', () => {
   });
 
   test('Check can get next and previous music on currentMusic', () => {
-    player.nextMusic();
+    player.playNextMusic();
     expect(player.currentPlayMusic).toEqual(musics[1]);
-    player.previousMusic();
+    player.playPreviousMusic();
     expect(player.currentPlayMusic).toEqual(musics[0]);
-    player.previousMusic();
+    player.playPreviousMusic();
     expect(player.currentPlayMusic).toEqual(musics[musics.length - 1]);
-    player.nextMusic();
+    player.playNextMusic();
     expect(player.currentPlayMusic).toEqual(musics[0]);
   });
 
   test('Check choice music play', () => {
-    player.choiceMusic(musics[3].id);
+    player.playChoiceMusic(musics[3].id);
     expect(player.currentPlayMusic).toEqual(musics[3]);
   });
 
