@@ -12,22 +12,22 @@ export const stopMusic = () => ({
   type: STOP_MUSIC,
 });
 
-export const NEXT_MUSIC = 'NEXT_MUSIC';
+export const PLAY_NEXT_MUSIC = 'PLAY_NEXT_MUSIC';
 
-export const nextMusic = () => ({
-  type: NEXT_MUSIC,
+export const playNextMusic = () => ({
+  type: PLAY_NEXT_MUSIC,
 });
 
-export const PRIVIOUS_MUSIC = 'PRIVIOUS_MUSIC';
+export const PLAY_PREVIOUS_MUSIC = 'PLAY_PREVIOUS_MUSIC';
 
-export const priviousMusic = () => ({
-  type: PRIVIOUS_MUSIC,
+export const playPreviousMusic = () => ({
+  type: PLAY_PREVIOUS_MUSIC,
 });
 
-export const CHOICE_MUSIC = 'CHOICE_MUSIC';
+export const PLAY_CHOICE_MUSIC = 'PLAY_CHOICE_MUSIC';
 
-export const choiceMusic = (musicId: string) => ({
-  type: CHOICE_MUSIC,
+export const playChoiceMusic = (musicId: string) => ({
+  type: PLAY_CHOICE_MUSIC,
   payload: {
     musicId,
   },

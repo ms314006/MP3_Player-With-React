@@ -13,8 +13,8 @@ interface PlayerProps {
   currentPlayTime: number;
   playMusic(): void;
   stopMusic(): void;
-  nextMusic(): void;
-  previousMusic(): void;
+  playNextMusic(): void;
+  playPreviousMusic(): void;
   updateCurrentPlayTime(): void;
   changeCurrentPlayTime(second: number): void;
   updateSound(sound: number): void;
@@ -48,7 +48,7 @@ const Player = (props: PlayerProps) => {
           <img
             src="./icon/previous.svg"
             className={styles.icon}
-            onClick={props.previousMusic}
+            onClick={props.playPreviousMusic}
           />
           <div className={styles.playStatusIcon}>
             <img
@@ -59,7 +59,7 @@ const Player = (props: PlayerProps) => {
           <img
             src="./icon/next.svg"
             className={styles.icon}
-            onClick={props.nextMusic}
+            onClick={props.playNextMusic}
           />
           <img src="./icon/cycle.svg" className={styles.icon}/>
         </div>
@@ -120,8 +120,8 @@ const mapStateToProps = (state:
 const mapStateToDispatch = (dispatch: any) => ({
   playMusic: () => { dispatch(actions.playMusic()); },
   stopMusic: () => { dispatch(actions.stopMusic()); },
-  nextMusic: () => { dispatch(actions.nextMusic()); },
-  previousMusic: () => { dispatch(actions.priviousMusic()); },
+  playNextMusic: () => { dispatch(actions.playNextMusic()); },
+  playPreviousMusic: () => { dispatch(actions.playPreviousMusic()); },
   updateCurrentPlayTime: () => { dispatch(actions.updateCurrentPlayTime()) },
   changeCurrentPlayTime: (second: number) => { dispatch(actions.changeCurrentPlayTime(second)) },
   updateSound: (sound: number) => { dispatch(actions.updateSound(sound)); },

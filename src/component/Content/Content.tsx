@@ -5,8 +5,8 @@ import * as actions from '../../actions/player';
 import styles from './index.scss';
 
 interface ContentProps {
-  nextMusic(): void;
-  previousMusic(): void;
+  playNextMusic(): void;
+  playPreviousMusic(): void;
 }
 
 const Content = (props: ContentProps) => {
@@ -21,12 +21,12 @@ const Content = (props: ContentProps) => {
                 <img
                   src={`./icon/arrow-left.svg`}
                   className={styles.arrowControllerLeft}
-                  onClick={props.previousMusic}
+                  onClick={props.playPreviousMusic}
                 />
                 <img
                   src={`./icon/arrow-right.svg`}
                   className={styles.arrowControllerRight}
-                  onClick={props.nextMusic}
+                  onClick={props.playNextMusic}
                 />
             </div>
             <div className={styles.bannerSeachInput}>
@@ -49,8 +49,8 @@ const Content = (props: ContentProps) => {
 };
 
 const mapStateToDispatch = (dispatch: any) => ({
-  nextMusic: () => { dispatch(actions.nextMusic()); },
-  previousMusic: () => { dispatch(actions.priviousMusic()); },
+  playNextMusic: () => { dispatch(actions.playNextMusic()); },
+  playPreviousMusic: () => { dispatch(actions.playPreviousMusic()); },
 });
 
 export default connect(null, mapStateToDispatch)(Content);

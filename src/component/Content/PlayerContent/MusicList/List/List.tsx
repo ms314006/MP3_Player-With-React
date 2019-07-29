@@ -8,7 +8,7 @@ interface ListProps {
   index: number;
   music: IMusic;
   currentPlayMusic: IMusic;
-  choiceMusic(musicId: string): void;
+  playChoiceMusic(musicId: string): void;
 }
 
 const List = (props: ListProps) => {
@@ -16,7 +16,7 @@ const List = (props: ListProps) => {
   return (
     <div
       className={`${styles.listBlock} ${isCurrentPlayMusic() ? styles.shadow : ''}`}
-      onClick={() => { props.choiceMusic(props.music.id) }}
+      onClick={() => { props.playChoiceMusic(props.music.id) }}
     >
       <div className={styles.listLeftBlock}>
         <div
@@ -52,7 +52,7 @@ const mapStateToProps = (state: { music: IMusic }) => ({
 });
 
 const mapStateToDispatch = (dispatch: any) => ({
-  choiceMusic: (musicId: string) => { dispatch(actions.choiceMusic(musicId)); },
+  playChoiceMusic: (musicId: string) => { dispatch(actions.playChoiceMusic(musicId)); },
 });
 
 export default connect(mapStateToProps, mapStateToDispatch)(List);

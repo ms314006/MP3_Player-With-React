@@ -61,7 +61,7 @@ class AudioPlayer implements IPlayer {
     this.audioPlayer.pause();
   }
 
-  nextMusic = (): void => {
+  playNextMusic = (): void => {
     const currentPlayerMusicIndex = this.getMusicIndexWithId(this.currentPlayMusic.id);
     const nextMusicIndex = currentPlayerMusicIndex === this.musics.length - 1 ? 0 : currentPlayerMusicIndex + 1;
     this.currentPlayMusic = this.musics[nextMusicIndex];
@@ -69,7 +69,7 @@ class AudioPlayer implements IPlayer {
     this.playMusic();
   }
 
-  previousMusic = (): void => {
+  playPreviousMusic = (): void => {
     const currentPlayerMusicIndex = this.getMusicIndexWithId(this.currentPlayMusic.id);
     const previousMusicIndex = currentPlayerMusicIndex === 0 ? this.musics.length - 1 : currentPlayerMusicIndex - 1;
     this.currentPlayMusic = this.musics[previousMusicIndex];
@@ -77,7 +77,7 @@ class AudioPlayer implements IPlayer {
     this.playMusic();
   }
 
-  choiceMusic = (musicId: string): void => {
+  playChoiceMusic = (musicId: string): void => {
     this.currentPlayMusic = this.musics[this.getMusicIndexWithId(musicId)];
     this.readyPlayNewMusic();
     this.playMusic();

@@ -11,9 +11,9 @@ export interface IPlayer {
   playStatus: playStatus;
   playMusic(): void;
   stopMusic(): void;
-  nextMusic(): void;
-  previousMusic(): void;
-  choiceMusic(musicId: string): void;
+  playNextMusic(): void;
+  playPreviousMusic(): void;
+  playChoiceMusic(musicId: string): void;
   getCurrentPlayTime(): number;
   changeCurrentPlayTime(time: number): void;
   changePlayType(): void;

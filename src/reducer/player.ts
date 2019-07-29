@@ -1,12 +1,12 @@
 import {
   PLAY_MUSIC,
   STOP_MUSIC,
-  NEXT_MUSIC,
-  PRIVIOUS_MUSIC,
+  PLAY_NEXT_MUSIC,
+  PLAY_PREVIOUS_MUSIC,
   UPDATE_CURRENT_PLAY_TIME,
   CHANGE_CURRENT_PLAY_TIME,
   UPDATE_SOUND,
-  CHOICE_MUSIC
+  PLAY_CHOICE_MUSIC
 } from '../actions/player';
 import AudioPlayer from '../lib/AudioPlayer';
 import { IMusic } from '../lib/interface/IMusic';
@@ -55,19 +55,19 @@ const playerReducer = (state: IState = initState, action: any) => {
     case STOP_MUSIC:
       player.stopMusic();
       return updatePlayerInformation();
-    case NEXT_MUSIC:
-      player.nextMusic();
+    case PLAY_NEXT_MUSIC:
+      player.playNextMusic();
       return updatePlayerInformation();
-    case PRIVIOUS_MUSIC:
-      player.previousMusic();
+    case PLAY_PREVIOUS_MUSIC:
+      player.playPreviousMusic();
       return updatePlayerInformation();
     case UPDATE_CURRENT_PLAY_TIME:
       return updatePlayerInformation();
     case CHANGE_CURRENT_PLAY_TIME:
       player.changeCurrentPlayTime(action.payload.second);
       return updatePlayerInformation();
-    case CHOICE_MUSIC:
-      player.choiceMusic(action.payload.musicId);
+    case PLAY_CHOICE_MUSIC:
+      player.playChoiceMusic(action.payload.musicId);
       return updatePlayerInformation();
     case UPDATE_SOUND: {
       player.updateSound(action.payload.sound);
